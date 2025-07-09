@@ -2,7 +2,7 @@ name: DataEase Build and Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ v2.10 ]
   workflow_dispatch:
 
 env:
