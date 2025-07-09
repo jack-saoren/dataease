@@ -35,7 +35,12 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('pom.xml') }}
           restore-keys: ${{ runner.os }}-m2-
-
+      # 校验阿里云密码    
+      - name: Verify Secrets
+        run: |
+          echo "ALIYUN_USERNAME exists: ${{ secrets.ALIYUN_USERNAME != '' }}"
+          echo "ALIYUN_PASSWORD exists: ${{ secrets.ALIYUN_PASSWORD != '' }}"
+          
       # 4. 在根目录 (dataease) 执行 Maven install
       - name: Build root module
         run: mvn clean install -Dmaven.test.skip=true
